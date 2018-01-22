@@ -15,10 +15,6 @@ var Page = db.define('page', {
 		validate: {
             isUrl: true
         }, 
-        get() {
-        	const url = this.getDataValue("url"); 
-        	return url; 
-        }
 		// unique: 'compositeIndex'
 	},
 	content: {
@@ -37,7 +33,9 @@ var Page = db.define('page', {
 	}
 }, {getterMethods: {
 	// put all the getter methods in here 
-
+		urlTitle: function(){
+			return '/wiki/' + this.urlTitle; 
+		}
 	}
 
 }); 
